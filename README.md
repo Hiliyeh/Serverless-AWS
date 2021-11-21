@@ -1,4 +1,4 @@
-# Codingly.io: Base Serverless Framework Template
+# Base Serverless Framework Template
 
 https://www.serverless.com
 
@@ -19,5 +19,8 @@ npm install
 You are ready to go!
 
 # Serverless-AWS
-# Serverless-AWS
-# Serverless-AWS
+
+- CloudFormation
+- Lambda
+- API Gateway
+- IAM
