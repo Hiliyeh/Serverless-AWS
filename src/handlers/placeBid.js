@@ -2,6 +2,7 @@ import AWS from "aws-sdk";
 import commonMiddelware from "../lib/commonMiddelwar";
 import createError from "http-errors";
 import { getAuctionById } from "./getAuction";
+
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 async function placeBid(event, context) {
@@ -27,11 +28,12 @@ async function placeBid(event, context) {
   };
 
   let updatedAuction;
+
   try {
     const result = await dynamodb.update(params).promise();
     updatedAuction = result.Attributes;
-  } catch (errro) {
-    console.log(error);
+  } catch (error) {
+    console.error(error);
     throw new createError.InternalServerError(error);
   }
   return {
