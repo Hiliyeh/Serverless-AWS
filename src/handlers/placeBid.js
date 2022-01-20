@@ -1,5 +1,5 @@
 import AWS from "aws-sdk";
-import commonMiddelware from "../lib/commonMiddelwar";
+import commonMiddleware from "../lib/commonMiddleware";
 import createError from "http-errors";
 import { getAuctionById } from "./getAuction";
 
@@ -42,4 +42,4 @@ async function placeBid(event, context) {
   };
 }
 
-export const handler = commonMiddelware(placeBid);
+export const handler = commonMiddleware(placeBid);
