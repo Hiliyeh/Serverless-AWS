@@ -11,6 +11,9 @@ async function placeBid(event, context) {
 
   const auction = await getAuctionById(id);
 
+  if (auction.status !== "OPEN") {
+    throw new createError.Forbidden(`You cannot bid on closed auctions !`);
+  }
   if (amount <= auction.highestBid.amount) {
     throw new createError.Forbidden(
       `Your bid must be higher than ${auction.highestBid.amount}!`
@@ -22,9 +25,9 @@ async function placeBid(event, context) {
     key: { id },
     UpdateExpression: "set highestBid.amount = :amount",
     ExpressionAttributeValues: {
-      ":amount": amount,
+      ":amount": amount
     },
-    ReturnValues: "ALL_NEW",
+    ReturnValues: "ALL_NEW"
   };
 
   let updatedAuction;
@@ -38,7 +41,7 @@ async function placeBid(event, context) {
   }
   return {
     statusCode: 200,
-    body: JSON.stringify({ updatedAuction }),
+    body: JSON.stringify({ updatedAuction })
   };
 }
 

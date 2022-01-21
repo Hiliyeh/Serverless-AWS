@@ -11,7 +11,7 @@ export async function getAuctionById(id) {
     const result = await dynamodb
       .get({
         TableName: process.env.AUCTIONS_TABLE_NAME,
-        Key: { id },
+        Key: { id }
       })
       .promise();
     auction = result.Item;
@@ -31,7 +31,7 @@ async function getAuction(event, context) {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ auction }),
+    body: JSON.stringify({ auction })
   };
 }
 

@@ -28,14 +28,14 @@ functions:
           method: POST
           path: /auction
 
-  GetAuctions:
+  getAuctions:
     handler: src/handlers/getAuctions.handler
     events:
       - http:
           method: GET
           path: /auctions
 
-  GetAuction:
+  getAuction:
     handler: src/handlers/getAuction.handler
     events:
       - http:
