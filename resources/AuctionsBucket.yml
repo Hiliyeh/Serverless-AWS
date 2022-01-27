@@ -2,6 +2,12 @@ AuctionsBucket:
   Type: AWS::S3::Bucket
   Properties:
     BucketName: ${self:custom.AuctionsBucket.name}
+    #life cycle rule for s3
+    # LifecylceConfiguration:
+    #  Rules:
+    #   - Id: ExpirePictures
+    #   Status: Enabled
+    #  ExpirationInDays: 1
 
 AuctionsBucketPolicy:
   Type: AWS::S3::BucketPolicy
